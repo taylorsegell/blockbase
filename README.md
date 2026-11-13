@@ -2,7 +2,7 @@
 
 ![Blockbase launch poster with the mascot, install command, and four product benefits](docs/media/blockbase-poster.jpg)
 
-[Download the 24-second Blockbase demo](docs/media/blockbase-demo.mp4)
+https://github.com/user-attachments/assets/033b4e60-4042-44eb-895a-bb5655f293dc
 
 Blockbase is a local catalog and adaptation engine for UI components. Import a component once and Blockbase keeps its original source immutable, indexes it for search, and normalizes its styling into a framework-neutral token contract. When you need it in another project, Blockbase produces an adaptation that fits that project's own tokens and conventions, usually in one or two agent exchanges.
 
