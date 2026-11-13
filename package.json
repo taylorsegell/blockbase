@@ -19,7 +19,7 @@
     "release:publish": "pnpm build && pnpm -r --filter @blockbase/contracts --filter @blockbase/core --filter @blockbase/mcp --filter @blockbase/cli --filter @blockbase/preview publish --access public --no-git-checks"
   },
   "devDependencies": {
-    "@ast-grep/napi": "^0.45.3",
+    "@ast-grep/napi": "^0.51.1",
     "typescript": "^5.9.2"
   },
   "engines": {
