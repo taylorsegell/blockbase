@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1",
+  "bundleId": "bundle_card_01",
+  "componentId": "cmp_card_01",
+  "revisionId": "sha256:card-revision",
+  "projectPath": "/tmp/example-react-project",
+  "manifest": {
+    "schemaVersion": "1",
+    "bundleId": "bundle_card_01",
+    "componentId": "cmp_card_01",
+    "revisionId": "sha256:card-revision",
+    "generatedAt": "2026-09-16T00:00:00.000Z",
+    "files": [
+      {
+        "path": "src/components/Card.tsx",
+        "operation": "create",
+        "contentHash": "sha256:adapted-card"
+      }
+    ],
+    "validationCommands": ["pnpm test", "pnpm build"]
+  },
+  "files": [
+    {
+      "path": "src/components/Card.tsx",
+      "content": "export function Card() { return <div />; }\n",
+      "operation": "create",
+      "contentHash": "sha256:adapted-card"
+    }
+  ],
+  "tokenMappings": [
+    {
+      "sourceToken": "surface.default",
+      "destinationExpression": "var(--color-surface)",
+      "confidence": "high"
+    }
+  ],
+  "dependencyDelta": {
+    "add": [],
+    "remove": [],
+    "conflicts": []
+  },
+  "placement": {
+    "directory": "src/components",
+    "importPath": "@/components/Card"
+  },
+  "providers": [],
+  "residuals": [],
+  "warnings": [],
+  "risk": "low",
+  "validationCommands": ["pnpm test", "pnpm build"]
+}

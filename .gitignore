@@ -1,0 +1,34 @@
+# Dependencies and build output
+node_modules/
+/packages/*/dist/
+/packages/cli/payload/
+apps/preview/dist/
+apps/vscode/dist/
+apps/vscode/out/
+*.vsix
+*.tsbuildinfo
+coverage/
+
+# Local environment
+.env
+.env.*
+!.env.example
+*.log
+*.sqlite
+*.sqlite-*
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+
+# Agent working directories
+.worktrees/
+.superpowers/
+.brain/
+.agents/
+.pouch/
+.impeccable/
+.cursor/
+.claude/settings.local.json
+_inbox/

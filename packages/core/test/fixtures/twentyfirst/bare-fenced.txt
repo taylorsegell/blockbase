@@ -1,0 +1,6 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+export function GlowButton({ label }: { label: string }) {
+  return <button className="glow-button">{label}</button>;
+}
+```

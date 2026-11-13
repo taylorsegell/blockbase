@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="av25i1hu" width="256" height="256" viewBox="0 0 40 40">
+  <style>
+    .av25i1hu-bob { animation: av25i1hu-hop 3.2s ease-in-out infinite; }
+    .av25i1hu-eyes { animation: av25i1hu-look 3.2s ease-in-out infinite; }
+    @keyframes av25i1hu-hop {
+      0%, 70%, 100% { transform: translateY(0); }
+      77% { transform: translateY(-2.2px); }
+      84% { transform: translateY(0); }
+      90% { transform: translateY(-1px); }
+      96% { transform: translateY(0); }
+    }
+    @keyframes av25i1hu-look {
+      0%, 68%, 100% { transform: translateY(0); }
+      76%, 90% { transform: translateY(-1px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .av25i1hu * { animation: none !important; }
+    }
+  </style>
+  <g class="av25i1hu-bob" stroke="#141414" stroke-width="0.6" stroke-linejoin="miter">
+    <polygon points="10.73,10.73 26.18,10.73 29.27,7.64 13.82,7.64" fill="#EDE7DA"/>
+    <polygon points="26.18,10.73 26.18,20 29.27,16.91 29.27,7.64" fill="#EDE7DA"/>
+    <polygon points="26.18,20 29.27,20 32.36,16.91 29.27,16.91" fill="#EDE7DA"/>
+    <polygon points="29.27,20 29.27,24.64 32.36,21.55 32.36,16.91" fill="#EDE7DA"/>
+    <polygon points="29.27,24.64 32.36,24.64 35.45,21.55 32.36,21.55" fill="#EDE7DA"/>
+    <polygon points="32.36,24.64 32.36,30.82 35.45,27.73 35.45,21.55" fill="#EDE7DA"/>
+    <polygon points="29.27,30.82 29.27,37 32.36,33.91 32.36,27.73" fill="#EDE7DA"/>
+    <polygon points="12.27,33.91 12.27,37 15.36,33.91 15.36,30.82" fill="#EDE7DA"/>
+    <polygon points="4.55,24.64 7.64,24.64 10.73,21.55 7.64,21.55" fill="#EDE7DA"/>
+    <polygon points="7.64,20 10.73,20 13.82,16.91 10.73,16.91" fill="#EDE7DA"/>
+    <polygon points="10.73,10.73 26.18,10.73 26.18,20 29.27,20 29.27,24.64 32.36,24.64 32.36,30.82 29.27,30.82 29.27,37 24.64,37 24.64,33.91 12.27,33.91 12.27,37 7.64,37 7.64,30.82 4.55,30.82 4.55,24.64 7.64,24.64 7.64,20 10.73,20" fill="#EDE7DA"/>
+    <polygon points="15.36,6.09 21.55,6.09 24.64,3 18.45,3" fill="#FE6A00"/>
+    <polygon points="21.55,6.09 21.55,10.73 24.64,7.64 24.64,3" fill="#FE6A00"/>
+    <polygon points="15.36,6.09 21.55,6.09 21.55,10.73 15.36,10.73" fill="#FE6A00"/>
+    <g class="av25i1hu-eyes">
+      <rect x="13.82" y="14.59" width="3.09" height="3.09" fill="#141414" stroke="none"/>
+      <rect x="14.75" y="14.9" width="1.24" height="1.24" fill="#EDE7DA" stroke="none"/>
+      <rect x="20" y="14.59" width="3.09" height="3.09" fill="#141414" stroke="none"/>
+      <rect x="20.93" y="14.9" width="1.24" height="1.24" fill="#EDE7DA" stroke="none"/>
+    </g>
+  </g>
+  <circle class="av25i1hu-dot" cx="33" cy="33" r="6" fill="#fe6a00" stroke="#141414" stroke-width="3"/>
+</svg>

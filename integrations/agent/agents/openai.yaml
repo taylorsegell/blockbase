@@ -1,0 +1,11 @@
+name: blockbase
+version: 0.1.0
+description: Repository-owned Blockbase agent skills and CLI routing.
+skills:
+  - name: blockbase
+    source: ../SKILL.md
+  - name: blockbase-capture
+    source: ../skills/blockbase-capture/SKILL.md
+  - name: blockbase-find-and-fit
+    source: ../skills/blockbase-find-and-fit/SKILL.md
+command: blockbase

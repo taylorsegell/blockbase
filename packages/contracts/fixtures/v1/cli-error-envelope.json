@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1",
+  "ok": false,
+  "operation": "catalog.locate",
+  "error": {
+    "code": "CATALOG_NOT_FOUND",
+    "message": "No catalog was found."
+  },
+  "warnings": [],
+  "recoveryActions": [
+    {
+      "id": "choose-catalog",
+      "label": "Pass --catalog with an explicit path",
+      "safe": true,
+      "command": "blockbase catalog locate --catalog <path> --json"
+    }
+  ]
+}

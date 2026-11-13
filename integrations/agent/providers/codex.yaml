@@ -1,0 +1,15 @@
+provider: codex
+skillRoot: skills
+skills:
+  - blockbase
+  - blockbase-capture
+  - blockbase-inbox
+  - blockbase-find-and-fit
+  - blockbase-organize
+  - blockbase-audit
+executable: blockbase
+projectDirectory: .codex
+globalDirectory: .codex
+scopes: project, global
+mcp: optional
+mcpConfig: mcp.json

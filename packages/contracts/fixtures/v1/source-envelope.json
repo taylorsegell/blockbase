@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1",
+  "sourceType": "file",
+  "files": [
+    {
+      "path": "Card.tsx",
+      "content": "export function Card() { return <div />; }\n",
+      "contentHash": "sha256:card"
+    }
+  ],
+  "assets": [],
+  "entryPoint": "Card.tsx",
+  "provenance": {
+    "sourceType": "file",
+    "locator": "fixtures/Card.tsx"
+  }
+}

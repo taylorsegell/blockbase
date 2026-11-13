@@ -1,0 +1,10 @@
+:root {
+  --surface-page: #f8fafc;
+  --content-ink: #0f172a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-page: #0f172a;
+    --content-ink: #f8fafc;
+  }
+}

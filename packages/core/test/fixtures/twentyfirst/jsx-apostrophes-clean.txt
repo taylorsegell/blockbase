@@ -1,0 +1,18 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+friendly-note.tsx
+export function FriendlyNote() {
+  return (
+    <p className="friendly-note">
+      Don't worry, it's fine. We're here (really) and you'll see.
+    </p>
+  );
+}
+
+demo.tsx
+import { FriendlyNote } from "./friendly-note"
+
+export default function Demo() {
+  return <FriendlyNote />;
+}
+```

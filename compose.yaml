@@ -1,0 +1,55 @@
+# Homelab run configuration for the Blockbase MCP production image (see
+# root Dockerfile, task 3.1). Intended to run on a host that is ONLY
+# reachable over Tailscale — see docs/deployment/homelab-runbook.md before
+# using this file.
+#
+# SECURITY (read this before editing):
+#   - Tailscale (the host's tailnet interface/address) is the PRIMARY
+#     network boundary. Nothing outside the tailnet can reach this port at
+#     all when BIND_HOST is set correctly. The bearer token below is
+#     defense-in-depth, a SECOND independent layer — never rely on the
+#     token alone.
+#   - NEVER publish this port on 0.0.0.0 or any public interface, and NEVER
+#     front it with a reverse proxy exposed to the public internet. Doing
+#     so throws away the Tailscale boundary and leaves only the bearer
+#     token standing between this server and the open internet.
+#   - This file contains PLACEHOLDERS ONLY. BIND_HOST defaults to
+#     127.0.0.1 (loopback — safe, but only reachable from the host itself)
+#     specifically so an operator who deploys this file verbatim, without
+#     reading the runbook, does not accidentally publish to the world. Set
+#     BIND_HOST to this host's real Tailscale IP/hostname (e.g. the
+#     100.x.y.z tailnet address, or a MagicDNS name) in a local .env file —
+#     never commit a real address here. BLOCKBASE_MCP_TOKEN must come from
+#     a local .env file or the calling shell's environment — never a
+#     literal value in this file.
+
+services:
+  blockbase-mcp:
+    image: ${BLOCKBASE_IMAGE:-blockbase-mcp:latest}
+    container_name: blockbase-mcp
+    restart: unless-stopped
+    environment:
+      # Required at runtime; never given a default here. See "token
+      # rotation" in the runbook for how to change it without downtime.
+      - BLOCKBASE_MCP_TOKEN=${BLOCKBASE_MCP_TOKEN:?set BLOCKBASE_MCP_TOKEN in .env or the shell environment — see docs/deployment/homelab-runbook.md}
+    ports:
+      # BIND_HOST: the Tailscale-only network boundary. Defaults to
+      # loopback (127.0.0.1) so this file is safe to run as committed.
+      # Override with this host's Tailscale address in .env, e.g.:
+      #   BIND_HOST=100.64.12.34
+      #   BIND_HOST=my-homelab-host.tailnet-name.ts.net
+      # Never set BIND_HOST=0.0.0.0 — that publishes on every interface,
+      # including any public one the host has.
+      - '${BIND_HOST:-127.0.0.1}:${PUBLISHED_PORT:-8080}:8080'
+    volumes:
+      # Persistent catalog root — survives container replacement/upgrade.
+      # Swap for a bind mount (e.g. /srv/blockbase/catalog:/data/catalog)
+      # if you prefer a host path you can back up directly; see the
+      # runbook's backup/restore section for both forms.
+      - blockbase-catalog:/data/catalog
+    # Compose inherits the image's HEALTHCHECK as-is (see Dockerfile) —
+    # nothing here disables or overrides it. `docker compose ps` and
+    # `docker inspect` report the same readiness signal this way.
+
+volumes:
+  blockbase-catalog:

@@ -1,0 +1,797 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+/* Catalog files live outside the package; the blockbase-catalog Vite plugin
+   injects an @source for <catalogRoot>/components/** at transform time. */
+@source "./**/*.tsx";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Orange for small text. Pulled 25% toward the theme's ink so it clears 4.5:1
+   on every theme's paper (raw --brand is ~3.6:1 on light paper). Themes are set
+   on <html>, so this resolves against the active theme's tokens. */
+:root {
+  --brand-ink: color-mix(in oklab, var(--brand), var(--foreground) 25%);
+}
+
+:root,
+[data-theme="blocks-light"] {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --brand: #ea580c;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.922 0 0);
+  --line: color-mix(in oklab, var(--border) 64%, var(--background));
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+html.dark:not([data-theme]),
+[data-theme="blocks-dark"] {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --brand: #f97316;
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --line: color-mix(in oklab, var(--border) 64%, var(--background));
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-brand: var(--brand);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.preview-sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+}
+
+.preview-sidebar-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 20;
+  transform: translate(50%, -50%);
+}
+
+.preview-sidebar-toggle.is-closed {
+  right: auto;
+  left: 0;
+}
+
+/* The active block marks its spot on the folder's guide line. */
+.sidebar-nav-leaf-active::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+  left: 17px;
+  width: 1.5px;
+  border-radius: 1px;
+  background: var(--brand);
+}
+
+@media (hover: none) {
+  .sidebar-nav-row {
+    min-height: 44px;
+  }
+}
+
+.preview-stage {
+  align-items: safe center;
+  justify-content: safe center;
+}
+
+/* A definite width so a child's `w-full` can resolve. `max-content` made percentage
+   widths cyclic, which crushed multi-column blocks until their tiles overlapped. */
+.preview-frame {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  align-items: safe center;
+}
+
+.preview-frame > * {
+  max-width: 100%;
+}
+
+.preview-frame-bleed {
+  width: 100%;
+  max-width: none;
+}
+
+.preview-frame-bleed > * {
+  width: 100%;
+  max-width: none;
+}
+
+.catalog-home-total {
+  font-family: var(--font-sans);
+  font-size: 6rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}
+
+.catalog-home-unit {
+  margin-bottom: 0.45rem;
+  font-size: 1.625rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.collections-home-create {
+  max-width: 40rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.collection-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.125rem;
+  width: 100%;
+  padding: 0.125rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--muted) 60%, transparent);
+}
+
+.collection-tabs-create {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 10rem;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.collection-tabs-input {
+  min-width: 0;
+  flex: 1 1 auto;
+  height: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--background);
+  padding: 0 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--foreground);
+  outline: none;
+}
+
+.collection-tabs-input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.collection-tabs-hint {
+  padding: 0 0.35rem;
+  font-size: 0.625rem;
+  line-height: 1.2;
+  color: var(--muted-foreground);
+}
+
+.catalog-filter-bar {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.gallery-search {
+  position: relative;
+  flex: 1 1 16rem;
+  min-width: 12rem;
+  max-width: 28rem;
+}
+
+.gallery-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 0.25rem 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.gallery-filter select {
+  height: 34px;
+  border: 0;
+  background: transparent;
+  padding-right: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--foreground);
+  outline: none;
+}
+
+.gallery-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  cursor: pointer;
+}
+
+.gallery-back:hover,
+.gallery-back:focus-visible {
+  color: var(--foreground);
+  outline: none;
+}
+
+.gallery-empty {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Bucket chips: sit under the mast and show one bucket at a time. */
+.bucket-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.bucket-jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 32px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  background: transparent;
+  font-weight: 600;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bucket-jump-link:hover {
+  background: var(--muted);
+}
+
+/* Selected state uses ink and muted wash, never --accent: several playground
+   themes redefine --accent as orange, which would sink the orange count. */
+.bucket-jump-link[aria-pressed='true'] {
+  border-color: var(--foreground);
+  background: var(--muted);
+}
+
+.bucket-jump-link[aria-pressed='true'] .bucket-jump-count {
+  color: var(--foreground);
+}
+
+@media (hover: none) {
+  .bucket-jump-link {
+    height: 44px;
+    padding: 0 1rem;
+  }
+}
+
+.bucket-jump-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.bucket-jump-count {
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+/* A bucket is a chapter: generous space above, heading tight to its cards. */
+.bucket-section {
+  margin-top: 4rem;
+  scroll-margin-top: 0;
+}
+
+.bucket-section:first-of-type {
+  margin-top: 3rem;
+}
+
+.bucket-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+  padding: 1rem 0 0.875rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid transparent;
+  background: var(--background);
+}
+
+.bucket-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.bucket-meta {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.bucket-count {
+  font-weight: 700;
+  color: var(--brand-ink);
+}
+
+/* Home grid, adapted from cmp_local_interactive-values-grid. Cells share
+   borders through a 1px negative margin so a short last row stays outlined. */
+.hairline-grid {
+  --hairline: color-mix(in oklab, var(--border) 90%, var(--foreground) 6%);
+  --cross: color-mix(in oklab, var(--foreground) 38%, var(--background));
+  display: grid;
+  width: 100%;
+  margin: 1.25rem 0 0;
+  padding: 0 1px 1px 0;
+  list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.catalog-filter-bar + .hairline-grid,
+.catalog-home-mast + .hairline-grid {
+  margin-top: 2.5rem;
+}
+
+/* Keep the bottom-corner tools clear of the description. */
+.hairline-cell:has(.hairline-tools) .hairline-tile {
+  padding-bottom: 3.5rem;
+}
+
+.hairline-cell {
+  position: relative;
+  margin: 0 -1px -1px 0;
+  border: 1px solid var(--hairline);
+}
+
+.hairline-tile {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 10.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.75rem 1.75rem 2rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hairline-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    20rem circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--brand) 11%, transparent),
+    transparent 78%
+  );
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hairline-tile:hover::before {
+  opacity: 1;
+}
+
+.hairline-tile:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: -1px;
+}
+
+.hairline-tile:focus-visible::before {
+  opacity: 0.6;
+}
+
+.hairline-meta,
+.hairline-title,
+.hairline-description {
+  position: relative;
+}
+
+.hairline-meta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--brand-ink);
+  transition: translate 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hairline-title {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  color: var(--foreground);
+}
+
+.hairline-description {
+  display: -webkit-box;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+  color: var(--muted-foreground);
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: color 200ms ease-out;
+}
+
+.hairline-tile:hover .hairline-meta {
+  translate: 2px 0;
+}
+
+.hairline-tile:hover .hairline-description {
+  color: color-mix(in oklab, var(--muted-foreground), var(--foreground) 35%);
+}
+
+/* Secondary actions in a cell's corner, revealed with the spotlight. */
+.hairline-tools {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 3;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hairline-cell:hover .hairline-tools,
+.hairline-cell:focus-within .hairline-tools {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hairline-tool,
+.hairline-tools .block-handoff-compact button {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--muted-foreground);
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.hairline-tool:hover,
+.hairline-tool:focus-visible {
+  background: var(--muted);
+  color: var(--foreground);
+  outline: none;
+}
+
+.hairline-tool:disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+@media (hover: none) {
+  .hairline-tools {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Corner marks sit on the border's centre line, above neighbouring cells. */
+.hairline-cross {
+  position: absolute;
+  z-index: 2;
+  width: 0.75rem;
+  height: 0.75rem;
+  translate: -50% -50%;
+  fill: none;
+  stroke: var(--cross);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.hairline-cross[data-corner='tl'] { top: -0.5px; left: -0.5px; }
+.hairline-cross[data-corner='tr'] { top: -0.5px; left: calc(100% + 0.5px); }
+.hairline-cross[data-corner='bl'] { top: calc(100% + 0.5px); left: -0.5px; }
+.hairline-cross[data-corner='br'] { top: calc(100% + 0.5px); left: calc(100% + 0.5px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hairline-tile::before,
+  .hairline-meta,
+  .hairline-description {
+    transition: none;
+  }
+
+  .hairline-tile:hover .hairline-meta {
+    translate: none;
+  }
+}
+
+.kit-mast-total {
+  color: var(--brand);
+}
+
+.kit-empty {
+  display: flex;
+  max-width: 28rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.kit-empty-mark {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--muted-foreground);
+}
+
+.kit-empty-copy {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+  color: var(--foreground);
+}
+
+.preview-canvas {
+  background: var(--background);
+  container-type: size;
+  container-name: preview;
+}
+
+@container preview (min-height: 1px) {
+  .trippy-scroll-stage {
+    height: 100cqh;
+  }
+}
+
+.preview-canvas::-webkit-scrollbar,
+.preview-sidebar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.preview-canvas::-webkit-scrollbar-thumb,
+.preview-sidebar::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--muted-foreground) 28%, transparent);
+  background-clip: padding-box;
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+html,
+body,
+#root {
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+@media (max-width: 767px) {
+  .preview-shell {
+    flex-direction: column;
+  }
+
+  .preview-sidebar {
+    width: 100%;
+    max-height: 45dvh;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .preview-sidebar-toggle {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+
+  /* Closed by default on phones: float in the corner instead of over the header tabs. */
+  .preview-sidebar-toggle.is-closed {
+    position: fixed;
+    top: auto;
+    bottom: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    transform: none;
+  }
+
+  .preview-shell > main {
+    min-height: 55dvh;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@utility border-line {
+  border-color: var(--line, var(--border));
+}
+
+@utility screen-line-top {
+  position: relative;
+  &::before {
+    content: "";
+    z-index: -1;
+    background-color: var(--line, var(--border));
+    width: 200vw;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: -100vw;
+  }
+}
+
+@utility screen-line-bottom {
+  position: relative;
+  &::after {
+    content: "";
+    z-index: -1;
+    background-color: var(--line, var(--border));
+    width: 200vw;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+  }
+}

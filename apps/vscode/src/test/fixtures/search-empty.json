@@ -1,0 +1,37 @@
+{
+  "data": {
+    "catalogRevision": "sha256:15d0a17e65e3d4fae835a5d3958a319c7165f6b58344a9bcffd2b020ad35d8c9",
+    "query": "zzzqqq",
+    "recoveryActions": [
+      {
+        "command": "blockbase import <source> --json",
+        "id": "import-component",
+        "label": "Import a component matching the query",
+        "safe": true
+      },
+      {
+        "command": "blockbase search \"zzzqqq\" --json",
+        "id": "relax-query",
+        "label": "Try a shorter or broader search query",
+        "safe": true
+      },
+      {
+        "command": "blockbase catalog rebuild --catalog /tmp/blockbase-home --json",
+        "id": "rebuild-index",
+        "label": "Rebuild the search index from manifests",
+        "safe": true
+      }
+    ],
+    "results": [],
+    "schemaVersion": "1",
+    "selection": {
+      "confidenceMargin": 0.12,
+      "margin": null,
+      "status": "miss"
+    }
+  },
+  "ok": true,
+  "operation": "search",
+  "schemaVersion": "1",
+  "warnings": []
+}

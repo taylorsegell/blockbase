@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1",
+  "componentId": "cmp_card_01",
+  "namespace": "local",
+  "slug": "card",
+  "displayName": "Card",
+  "description": "A compact content card.",
+  "aliases": [],
+  "tags": ["card", "content"],
+  "category": "cards",
+  "framework": "react",
+  "stylingModes": ["css"],
+  "currentRevision": "sha256:card-revision",
+  "provenance": {
+    "sourceType": "file",
+    "locator": "fixtures/Card.tsx",
+    "license": "MIT",
+    "attributionStatus": "known"
+  },
+  "compatibility": {
+    "language": "typescript",
+    "runtime": "react",
+    "frameworkRange": ">=19",
+    "clientServer": "either"
+  },
+  "interface": {
+    "props": ["title"],
+    "slots": [],
+    "events": [],
+    "accessibilityNotes": ["Use a heading for the card title."]
+  },
+  "dependencies": [],
+  "tokens": {
+    "schemaVersion": "1",
+    "contractId": "tokens_card_v1",
+    "tokens": [
+      {
+        "name": "surface.default",
+        "role": "surface",
+        "valueType": "color",
+        "defaultValue": "#ffffff",
+        "fallbackValue": "#ffffff",
+        "confidence": 1
+      }
+    ]
+  },
+  "quality": {
+    "parseStatus": "passed",
+    "previewStatus": "unknown",
+    "normalizationCoverage": 1,
+    "riskLevel": "low",
+    "warnings": []
+  },
+  "integrity": {
+    "sourceHash": "sha256:card",
+    "assetHashes": []
+  }
+}

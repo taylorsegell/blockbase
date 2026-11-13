@@ -1,0 +1,59 @@
+{
+  "name": "@blockbase/core",
+  "version": "0.3.2",
+  "description": "Blockbase catalog core: storage, import, search, projections and organization.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist",
+    "!dist/**/*.tsbuildinfo"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./catalog": {
+      "types": "./dist/catalog/index.d.ts",
+      "import": "./dist/catalog/index.js"
+    },
+    "./project": {
+      "types": "./dist/project/index.d.ts",
+      "import": "./dist/project/index.js"
+    },
+    "./migrations": {
+      "types": "./dist/migrations/index.d.ts",
+      "import": "./dist/migrations/index.js"
+    },
+    "./projections": {
+      "types": "./dist/projections/index.d.ts",
+      "import": "./dist/projections/index.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm --filter @blockbase/contracts build && tsc -p tsconfig.json",
+    "typecheck": "pnpm --filter @blockbase/contracts build && tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@blockbase/contracts": "workspace:*",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "yaml": "^2.9.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorsegell/blockbase.git",
+    "directory": "packages/core"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

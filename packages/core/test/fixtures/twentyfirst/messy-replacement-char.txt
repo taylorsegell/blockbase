@@ -1,0 +1,7 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+garbled-card.tsx
+export function GarbledCard() {
+  return <div className="garbled-card">Caf� menu</div>;
+}
+```

@@ -1,0 +1,5 @@
+.panel {
+  background-color: var(--card);
+  border-radius: 8px;
+  color: #304050;
+}

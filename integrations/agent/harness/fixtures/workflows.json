@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1",
+  "scenarios": [
+    {
+      "id": "success",
+      "source": "tests/fixtures/sources/normalization/static-tailwind",
+      "destination": "tests/fixtures/destinations/fixture-a",
+      "query": "StaticCard",
+      "validationCommands": ["true"],
+      "expected": "success"
+    },
+    {
+      "id": "ambiguity",
+      "source": "tests/fixtures/sources/normalization/static-tailwind",
+      "destination": "tests/fixtures/destinations/fixture-a",
+      "query": "pricing",
+      "seedImports": [
+        { "slug": "pricing-card", "name": "Pricing Card" },
+        { "slug": "pricing-panel", "name": "Pricing Panel" }
+      ],
+      "validationCommands": ["true"],
+      "expected": "ambiguous"
+    },
+    {
+      "id": "search-miss",
+      "source": "tests/fixtures/sources/normalization/static-tailwind",
+      "destination": "tests/fixtures/destinations/fixture-a",
+      "query": "nonexistent galaxy widget",
+      "validationCommands": ["true"],
+      "expected": "miss"
+    },
+    {
+      "id": "partial-normalization",
+      "source": "tests/fixtures/sources/normalization/arbitrary-literals",
+      "destination": "tests/fixtures/destinations/fixture-a",
+      "query": "Arbitrary",
+      "validationCommands": ["true"],
+      "expected": "partial"
+    },
+    {
+      "id": "unsupported-framework",
+      "source": "tests/fixtures/sources/normalization/static-tailwind",
+      "destination": "integrations/agent/harness/fixtures/unsupported-vue",
+      "query": "StaticCard",
+      "expected": "unsupported"
+    },
+    {
+      "id": "bounded-validation-failure",
+      "source": "tests/fixtures/sources/normalization/static-tailwind",
+      "destination": "tests/fixtures/destinations/fixture-b",
+      "query": "StaticCard",
+      "validationCommands": ["false"],
+      "expected": "validation-failed"
+    }
+  ]
+}

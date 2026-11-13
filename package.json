@@ -1,0 +1,28 @@
+{
+  "name": "blockbase",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.3.4",
+  "scripts": {
+    "build": "pnpm --filter @blockbase/contracts build && pnpm --filter @blockbase/core build && pnpm --filter @blockbase/mcp build && pnpm --filter @blockbase/preview build && pnpm --filter @blockbase/cli build",
+    "agent-portability": "pnpm --filter @blockbase/cli build && node --test integrations/agent/provider-packages.test.mjs integrations/agent/provider-harness.test.mjs integrations/agent/capture-parity.test.mjs integrations/agent/naming-contract.test.mjs integrations/agent/plugin-runtime.test.mjs",
+    "benchmark": "pnpm build && node benchmarks/run.mjs --entries 10000 --samples 25",
+    "regression:matrix": "pnpm --filter @blockbase/cli build && node integrations/release-matrix.mjs",
+    "drift:check": "pnpm --filter @blockbase/cli build && node integrations/agent/generate.mjs --check && node --test packages/core/test/projections.test.mjs packages/core/test/themes.test.mjs",
+    "test": "pnpm --filter @blockbase/contracts test && pnpm --filter @blockbase/core test && pnpm --filter @blockbase/mcp test && pnpm --filter @blockbase/preview test && pnpm --filter @blockbase/cli test && pnpm run agent-portability && pnpm run test:scripts",
+    "test:scripts": "node --test scripts/*.test.mjs",
+    "container:smoke": "node scripts/container-smoke.mjs",
+    "typecheck": "pnpm --filter @blockbase/contracts typecheck && pnpm --filter @blockbase/core typecheck && pnpm --filter @blockbase/mcp typecheck && pnpm --filter @blockbase/preview typecheck && pnpm --filter @blockbase/cli typecheck && tsc -p tsconfig.consumer.json --noEmit",
+    "pack:smoke": "pnpm build && node scripts/pack-smoke.mjs",
+    "release:dry": "pnpm build && pnpm -r --filter @blockbase/contracts --filter @blockbase/core --filter @blockbase/mcp --filter @blockbase/cli --filter @blockbase/preview publish --access public --no-git-checks --dry-run",
+    "release:publish": "pnpm build && pnpm -r --filter @blockbase/contracts --filter @blockbase/core --filter @blockbase/mcp --filter @blockbase/cli --filter @blockbase/preview publish --access public --no-git-checks"
+  },
+  "devDependencies": {
+    "@ast-grep/napi": "^0.45.3",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

@@ -1,0 +1,53 @@
+# Docker build context excludes for the Blockbase MCP production image.
+# Keep this in sync with what actually sits at the repo root — re-check with
+# `ls -la` before adding/removing patterns.
+
+# Version control / agent-session state — never needed to build or run.
+.git
+.github
+.cursor
+.moi
+.claude
+.brain
+.impeccable
+_inbox
+
+# Dependency & build caches — reinstalled/rebuilt inside the image so a
+# stale host copy can never leak in or shadow the frozen-lockfile install.
+node_modules
+**/node_modules
+**/dist
+**/*.tsbuildinfo
+
+# Secrets — BLOCKBASE_MCP_TOKEN must only ever arrive via the container's
+# runtime environment, never baked in from a local dotfile.
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Real catalog data. The catalog root is a runtime volume mount
+# (see Dockerfile: VOLUME /data/catalog), never image content — this
+# directory must never reach the build context, let alone the image.
+legacy-catalog
+
+# Tests, fixtures, benchmarks, and stray local scratch files — dev-only,
+# not part of the production runtime.
+tests
+benchmarks
+integrations/*
+# The CLI build copies integrations/agent into its npm payload.
+!integrations/agent
+scripts/fixtures
+**/*.test.mjs
+**/*.test.ts
+**/test/
+**/fixtures/
+temp.html
+fix-list.md
+
+# Docs — not needed to build or run the server.
+docs
+DESIGN.md
+PRODUCT.md
+README.MD

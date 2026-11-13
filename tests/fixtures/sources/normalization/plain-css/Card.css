@@ -1,0 +1,5 @@
+.card {
+  background: var(--surface);
+  color: #102030;
+  padding: 16px;
+}

@@ -1,0 +1,53 @@
+{
+  "name": "@blockbase/cli",
+  "version": "0.3.2",
+  "description": "Blockbase command line: catalog, agent installs, MCP and the local catalog page.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "blockbase": "dist/index.js",
+    "blockbase-metadata": "dist/metadata.js",
+    "blockbase-adapter": "dist/adapter.js"
+  },
+  "files": [
+    "dist",
+    "payload",
+    "!dist/**/*.tsbuildinfo"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./registry": {
+      "types": "./dist/registry.d.ts",
+      "import": "./dist/registry.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm --filter @blockbase/contracts build && pnpm --filter @blockbase/core build && pnpm --filter @blockbase/mcp build && tsc -p tsconfig.json && node scripts/copy-agent-payload.mjs",
+    "typecheck": "pnpm --filter @blockbase/contracts build && pnpm --filter @blockbase/core build && pnpm --filter @blockbase/mcp build && tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@blockbase/contracts": "workspace:*",
+    "@blockbase/core": "workspace:*",
+    "@blockbase/mcp": "workspace:*",
+    "@blockbase/preview": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorsegell/blockbase.git",
+    "directory": "packages/cli"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

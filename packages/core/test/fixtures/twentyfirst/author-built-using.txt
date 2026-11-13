@@ -1,0 +1,8 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+ribbon-note.tsx
+// Built using Example Studio
+export function RibbonNote({ note }: { note: string }) {
+  return <aside className="ribbon-note">{note}</aside>;
+}
+```

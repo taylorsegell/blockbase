@@ -1,0 +1,4 @@
+{
+  "name": "blockbase-contract-unsupported-vue",
+  "dependencies": { "vue": "^3.5.0" }
+}

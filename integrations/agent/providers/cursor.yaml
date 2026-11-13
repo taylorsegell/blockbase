@@ -1,0 +1,15 @@
+provider: cursor
+skillRoot: skills
+skills:
+  - blockbase
+  - blockbase-capture
+  - blockbase-inbox
+  - blockbase-find-and-fit
+  - blockbase-organize
+  - blockbase-audit
+executable: blockbase
+projectDirectory: .cursor
+globalDirectory: .cursor
+scopes: project, global
+mcp: optional
+mcpConfig: mcp.json

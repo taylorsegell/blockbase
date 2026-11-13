@@ -1,0 +1,8 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+long-list.tsx
+export function LongList({ items }: { items: string[] }) {
+  // ... rest of the component
+  return <ul className="long-list">{items.map((item) => <li key={item}>{item}</li>)}</ul>;
+}
+```

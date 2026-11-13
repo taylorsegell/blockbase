@@ -1,0 +1,57 @@
+name: Blockbase clean install and release gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
+        with:
+          version: 12.3.4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Install and validate plugin in an isolated home
+        shell: bash
+        run: |
+          agent_home="$(mktemp -d)"
+          node packages/cli/dist/index.js agent install --provider codex --scope global --home "$agent_home" --no-setup --json
+          node packages/cli/dist/index.js agent check --provider codex --scope global --home "$agent_home" --json
+          catalog_root="$(mktemp -d)"
+          node packages/cli/dist/index.js catalog rebuild --catalog "$catalog_root" --json
+          node packages/cli/dist/index.js catalog validate --catalog tests/fixtures/legacy-catalog/valid --json
+      - name: Create a catalog with setup, without a login service
+        shell: bash
+        run: |
+          blocks_home="$(mktemp -d)/blocks"
+          export BLOCKBASE_HOME="$blocks_home"
+          node packages/cli/dist/index.js setup --no-service --json | tee setup.json
+          node -e 'const r = JSON.parse(require("fs").readFileSync("setup.json", "utf8")); if (r.data.catalog !== "created") { console.error("expected catalog created, got " + r.data.catalog); process.exit(1); }'
+          node packages/cli/dist/index.js doctor --json
+      - run: pnpm test
+      - run: pnpm run drift:check
+      - run: pnpm run regression:matrix
+      - run: pnpm run benchmark

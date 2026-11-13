@@ -1,0 +1,8 @@
+{
+  "name": "blockbase",
+  "version": "0.3.2",
+  "description": "Import, park, organize, audit, and reuse UI components through the Blockbase CLI.",
+  "author": { "name": "Taylor Segell" },
+  "license": "MIT",
+  "keywords": ["blockbase", "components", "catalog"]
+}

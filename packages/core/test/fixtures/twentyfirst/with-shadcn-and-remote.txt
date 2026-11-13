@@ -1,0 +1,22 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+promo-banner.tsx
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
+export function PromoBanner({ className }: { className?: string }) {
+  return (
+    <div className={cn("promo-banner", className)}>
+      <img src="https://images.example.invalid/banner.png" alt="" />
+      <Button>Shop</Button>
+    </div>
+  );
+}
+
+demo.tsx
+import { PromoBanner } from "@/components/ui/promo-banner"
+
+export default function Demo() {
+  return <PromoBanner />;
+}
+```

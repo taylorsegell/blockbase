@@ -1,0 +1,266 @@
+{
+  "catalog migrate": {
+    "operation": "catalog.migrate",
+    "description": "Plan, apply, or resume an audited non-destructive migration from the legacy catalog.",
+    "argumentHint": "--catalog <legacy-root> --target <catalog-root> (--dry-run|--apply|--resume <report>) [--baseline <path>] [--out <report>] [--json]",
+    "json": true
+  },
+  "import <source>": {
+    "operation": "import",
+    "description": "Safely import a local React file, directory, stdin source, or 21st.dev paste into an immutable revision.",
+    "argumentHint": "[--catalog <path>] [--manifest <path>] [--entry-point <path>] [--namespace <name>] [--slug <slug>] [--name <display-name>] [--from 21st] [--demo <file>] [--source-type <type>] [--source-url <url>] [--license <license>] [--author <name>] [--tag <tag>]... [--json]",
+    "json": true
+  },
+  "catalog locate": {
+    "operation": "catalog.locate",
+    "description": "Resolve the catalog path without creating a catalog.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "catalog list": {
+    "operation": "catalog.list",
+    "description": "List every catalog component with its category, bucket, tags, and description, plus collections.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "catalog rebuild": {
+    "operation": "catalog.rebuild",
+    "description": "Rebuild the SQLite search index from committed manifests.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "search <query>": {
+    "operation": "search",
+    "description": "Search the manifest-derived SQLite FTS index with deterministic ranking and selection evidence.",
+    "argumentHint": "[--catalog <path>] [--project <path>] [--profile <path>] [--framework <name>] [--language <name>] [--runtime <name>] [--style <name>] [--limit <number>] [--confidence-margin <number>] [--json]",
+    "json": true
+  },
+  "inspect <component-id-or-alias>": {
+    "operation": "inspect",
+    "description": "Inspect an exact component ID or alias and an optional immutable revision.",
+    "argumentHint": "[--catalog <path>] [--revision <revision>] [--json]",
+    "json": true
+  },
+  "catalog validate": {
+    "operation": "catalog.validate",
+    "description": "Read-only validation of the legacy catalog and metadata.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "doctor": {
+    "operation": "doctor",
+    "description": "Run read-only catalog health diagnostics.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "project inspect --cwd <path>": {
+    "operation": "project.inspect",
+    "description": "Read bounded React project conventions, tokens, dependencies, and validation commands.",
+    "argumentHint": "[--json]",
+    "json": true
+  },
+  "adapt <component-id>": {
+    "operation": "adapt",
+    "description": "Prepare a deterministic destination-native adaptation without changing the destination project.",
+    "argumentHint": "[--catalog <path>] --project <path> [--revision <revision>] [--out <path>] [--json]",
+    "json": true
+  },
+  "add <component-id>": {
+    "operation": "add",
+    "description": "Plan or explicitly apply manifest-listed adaptation files.",
+    "argumentHint": "[--catalog <path>] --project <path> (--dry-run|--apply) [--revision <revision>] [--manifest <path>] [--out <path>] [--json]",
+    "json": true
+  },
+  "validate <adaptation-manifest>": {
+    "operation": "validate",
+    "description": "Run only the validation commands declared by an adaptation manifest.",
+    "argumentHint": "[--project <path>] [--json]",
+    "json": true
+  },
+  "agent link": {
+    "operation": "agent.link",
+    "description": "Link the repository-owned Blockbase skills and executable into an agent home.",
+    "argumentHint": "[--home <path>] [--json]",
+    "json": true
+  },
+  "agent check": {
+    "operation": "agent.check",
+    "description": "Check the repository-owned Blockbase links in an agent home.",
+    "argumentHint": "[--home <path>] [--json]",
+    "json": true
+  },
+  "agent unlink": {
+    "operation": "agent.unlink",
+    "description": "Remove only the repository-owned Blockbase links from an agent home.",
+    "argumentHint": "[--home <path>] [--json]",
+    "json": true
+  },
+  "agent install": {
+    "operation": "agent.install",
+    "description": "Install a provider package into project or global scope with an ownership inventory.",
+    "argumentHint": "--provider <claude-code|codex|cursor> --scope <project|global> [--project <path>] [--home <path>] [--mcp] [--no-setup] [--json]",
+    "json": true
+  },
+  "agent update": {
+    "operation": "agent.update",
+    "description": "Update only the Blockbase-owned provider payload and preserve unrelated configuration.",
+    "argumentHint": "--provider <claude-code|codex|cursor> --scope <project|global> [--project <path>] [--home <path>] [--mcp] [--no-setup] [--json]",
+    "json": true
+  },
+  "agent remove": {
+    "operation": "agent.remove",
+    "description": "Remove only Blockbase-owned provider records from project or global scope.",
+    "argumentHint": "--provider <claude-code|codex|cursor> --scope <project|global> [--project <path>] [--home <path>] [--json]",
+    "json": true
+  },
+  "inbox add (--path | -)": {
+    "operation": "inbox.add",
+    "description": "Parks a paste, 21st.dev paste, or local path without importing it.",
+    "argumentHint": "(--path <path> | -) [--from 21st] [--name <label>] [--entry-point <file>] [--catalog <path>] [--json]",
+    "json": true
+  },
+  "inbox list": {
+    "operation": "inbox.list",
+    "description": "Lists parked inbox items.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "inbox show <id>": {
+    "operation": "inbox.show",
+    "description": "Shows one parked inbox item.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "inbox import <id>": {
+    "operation": "inbox.import",
+    "description": "Imports a parked inbox item into the catalog.",
+    "argumentHint": "[--catalog <path>] [--namespace <name>] [--slug <slug>] [--name <display-name>] [--entry-point <file>] [--source-type <type>] [--source-url <url>] [--license <license>] [--author <name>] [--tag <tag>]... [--json]",
+    "json": true
+  },
+  "inbox discard <id>": {
+    "operation": "inbox.discard",
+    "description": "Discards a parked inbox item.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "tag add <component>": {
+    "operation": "tag.add",
+    "description": "Adds a tag on one component manifest.",
+    "argumentHint": "--tag <tag> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "tag remove <component>": {
+    "operation": "tag.remove",
+    "description": "Removes a tag from one component manifest.",
+    "argumentHint": "--tag <tag> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "tag list [component]": {
+    "operation": "tag.list",
+    "description": "Lists tags for one component or the whole catalog.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection create": {
+    "operation": "collection.create",
+    "description": "Creates a catalog collection.",
+    "argumentHint": "--id <id> --title <title> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection add": {
+    "operation": "collection.add",
+    "description": "Adds a component slug to a collection.",
+    "argumentHint": "--id <id> --slug <slug> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection remove": {
+    "operation": "collection.remove",
+    "description": "Removes a component slug from a collection.",
+    "argumentHint": "--id <id> --slug <slug> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection reorder": {
+    "operation": "collection.reorder",
+    "description": "Moves a slug within a collection.",
+    "argumentHint": "--id <id> --slug <slug> --index <number> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection delete": {
+    "operation": "collection.delete",
+    "description": "Deletes a collection other than favorites.",
+    "argumentHint": "--id <id> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "collection list": {
+    "operation": "collection.list",
+    "description": "Lists catalog collections.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "family set <component>": {
+    "operation": "family.set",
+    "description": "Assigns a component family, creating it when requested.",
+    "argumentHint": "--family <slug> [--name <name>] [--create] [--catalog <path>] [--json]",
+    "json": true
+  },
+  "family list": {
+    "operation": "family.list",
+    "description": "Lists taxonomy families and unassigned categories.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "history list [component]": {
+    "operation": "history.list",
+    "description": "Lists recent catalog changes, newest first, for the whole catalog or one component.",
+    "argumentHint": "[--limit <number>] [--catalog <path>] [--json]",
+    "json": true
+  },
+  "history undo": {
+    "operation": "history.undo",
+    "description": "Rolls the whole catalog back by --steps changes or --to a commit, as a new undoable commit.",
+    "argumentHint": "[--steps <number> | --to <commit>] [--catalog <path>] [--json]",
+    "json": true
+  },
+  "history restore <component>": {
+    "operation": "history.restore",
+    "description": "Puts one component back as it was at --to <commit>, leaving the rest of the catalog alone.",
+    "argumentHint": "--to <commit> [--catalog <path>] [--json]",
+    "json": true
+  },
+  "setup": {
+    "operation": "setup",
+    "description": "Create the catalog if absent and install the user login service that serves the catalog page.",
+    "argumentHint": "[--catalog <path>] [--port <number>] [--allowed-host <name>] [--no-service] [--json]",
+    "json": true
+  },
+  "ui": {
+    "operation": "ui",
+    "description": "Serve the local catalog page on a loopback port until interrupted.",
+    "argumentHint": "[--catalog <path>] [--port <number>] [--allowed-host <name>] [--open] [--json]",
+    "json": true
+  },
+  "ui status": {
+    "operation": "ui.status",
+    "description": "Report whether the catalog page is answering on its loopback port.",
+    "argumentHint": "[--port <number>] [--json]",
+    "json": true
+  },
+  "ui service install": {
+    "operation": "ui.service.install",
+    "description": "Install the user login service that keeps the catalog page running.",
+    "argumentHint": "[--catalog <path>] [--port <number>] [--allowed-host <name>] [--json]",
+    "json": true
+  },
+  "ui service uninstall": {
+    "operation": "ui.service.uninstall",
+    "description": "Remove the user login service that Blockbase installed.",
+    "argumentHint": "[--catalog <path>] [--json]",
+    "json": true
+  },
+  "ui service status": {
+    "operation": "ui.service.status",
+    "description": "Report the user login service state without changing it.",
+    "argumentHint": "[--catalog <path>] [--port <number>] [--json]",
+    "json": true
+  }
+}

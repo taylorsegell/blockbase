@@ -1,0 +1,56 @@
+{
+  "data": {
+    "catalogRevision": "sha256:15d0a17e65e3d4fae835a5d3958a319c7165f6b58344a9bcffd2b020ad35d8c9",
+    "query": "card",
+    "recoveryActions": [],
+    "results": [
+      {
+        "compatibility": {
+          "conflicts": [],
+          "matched": []
+        },
+        "componentId": "cmp_local_static-card",
+        "displayName": "Static Card",
+        "evidence": [
+          {
+            "field": "displayName",
+            "matchedTerms": [
+              "card"
+            ],
+            "value": "Static Card"
+          },
+          {
+            "field": "description",
+            "matchedTerms": [
+              "card"
+            ],
+            "value": "Imported React component Static Card."
+          },
+          {
+            "field": "sourceSymbols",
+            "matchedTerms": [
+              "card"
+            ],
+            "value": "article bg card Card className export foreground function lg p return rounded shadow sm StaticCard text"
+          }
+        ],
+        "favorite": false,
+        "namespace": "local",
+        "revisionId": "sha256:8105dd31872bb54094ebe76a269ff255f05b9112185a0a3222481d11f1bfd648",
+        "score": 0.93,
+        "slug": "static-card"
+      }
+    ],
+    "schemaVersion": "1",
+    "selection": {
+      "confidenceMargin": 0.12,
+      "margin": 0.93,
+      "selectedComponentId": "cmp_local_static-card",
+      "status": "selected"
+    }
+  },
+  "ok": true,
+  "operation": "search",
+  "schemaVersion": "1",
+  "warnings": []
+}

@@ -1,0 +1,24 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+// --- Component ---
+"use client"
+import * as React from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger);
+
+export function SkylineCard({ title }: { title: string }) {
+  const label = `Card ${title} keeps a \` backtick`;
+  return <div className="skyline-card">{label}</div>;
+}
+
+export default SkylineCard;
+
+// --- Demo ---
+import { SkylineCard } from "@/components/ui/skyline-card"
+
+export default function Demo() {
+  return <SkylineCard title="Demo" />;
+}
+```

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "blockbase",
+  "owner": {
+    "name": "Taylor Segell"
+  },
+  "metadata": {
+    "description": "Blockbase plugin for the local component catalog.",
+    "version": "0.3.2"
+  },
+  "plugins": [
+    {
+      "name": "blockbase",
+      "source": "./integrations/agent/generated/claude-code",
+      "description": "Import, park, organize, audit, and reuse UI components through the Blockbase CLI."
+    }
+  ]
+}

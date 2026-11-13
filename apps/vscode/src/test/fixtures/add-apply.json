@@ -1,0 +1,123 @@
+{
+  "data": {
+    "applied": true,
+    "bundle": {
+      "bundleId": "bundle_e0b5bc3c3dab7173",
+      "componentId": "cmp_local_glow-card",
+      "dependencyDelta": {
+        "add": [
+          {
+            "kind": "runtime",
+            "name": "motion",
+            "range": "*"
+          }
+        ],
+        "conflicts": [],
+        "remove": []
+      },
+      "files": [
+        {
+          "content": "import { motion } from 'motion/react';\nexport function GlowCard({ children }: { children?: React.ReactNode }) {\n  return <motion.div className=\"rounded-lg bg-[var(--color-surface)] p-4\" animate={{ opacity: 1 }}>{children}</motion.div>;\n}\n",
+          "contentHash": "sha256:de7d21ab756ba03cdd27a73e05d6dee27d01188cb7212520cb694ed1f1ac3429",
+          "operation": "create",
+          "path": "src/components/glow-card/GlowCard.tsx"
+        }
+      ],
+      "manifest": {
+        "bundleId": "bundle_e0b5bc3c3dab7173",
+        "componentId": "cmp_local_glow-card",
+        "files": [
+          {
+            "contentHash": "sha256:de7d21ab756ba03cdd27a73e05d6dee27d01188cb7212520cb694ed1f1ac3429",
+            "operation": "create",
+            "path": "src/components/glow-card/GlowCard.tsx"
+          }
+        ],
+        "generatedAt": "1970-01-01T00:00:00.000Z",
+        "projectPath": "/tmp/blockbase-fixture/p2",
+        "revisionId": "sha256:6b02cb6564c40c05f46579a56698570d4d39451549c3bd1f4093e909c2911b23",
+        "schemaVersion": "1",
+        "validationCommands": [
+          "pnpm build",
+          "pnpm lint",
+          "pnpm test"
+        ]
+      },
+      "placement": {
+        "directory": "src/components/glow-card",
+        "importPath": "@/components/glow-card/GlowCard"
+      },
+      "projectPath": "/tmp/blockbase-fixture/p2",
+      "provenance": {
+        "attributionStatus": "unknown",
+        "license": "unknown",
+        "locator": "/tmp/blockbase-fixture/sources/glow-card",
+        "sourceHash": "sha256:6b02cb6564c40c05f46579a56698570d4d39451549c3bd1f4093e909c2911b23",
+        "sourceType": "directory"
+      },
+      "providers": [],
+      "residuals": [],
+      "revisionId": "sha256:6b02cb6564c40c05f46579a56698570d4d39451549c3bd1f4093e909c2911b23",
+      "risk": "medium",
+      "schemaVersion": "1",
+      "tokenMappings": [
+        {
+          "confidence": "high",
+          "destinationExpression": "var(--color-surface)",
+          "sourceToken": "color.surface.default"
+        },
+        {
+          "confidence": "low",
+          "destinationExpression": "0.5rem",
+          "sourceToken": "radius.lg"
+        },
+        {
+          "confidence": "low",
+          "destinationExpression": "1rem",
+          "sourceToken": "space.4"
+        }
+      ],
+      "validationCommands": [
+        "pnpm build",
+        "pnpm lint",
+        "pnpm test"
+      ],
+      "warnings": [
+        "Token radius.lg has no destination token; preserved fallback 0.5rem.",
+        "Token space.4 has no destination token; preserved fallback 1rem."
+      ]
+    },
+    "plan": {
+      "blocked": [],
+      "bundleId": "bundle_e0b5bc3c3dab7173",
+      "dependencyDelta": {
+        "add": [
+          {
+            "kind": "runtime",
+            "name": "motion",
+            "range": "*"
+          }
+        ],
+        "conflicts": [],
+        "remove": []
+      },
+      "files": [
+        {
+          "contentHash": "sha256:de7d21ab756ba03cdd27a73e05d6dee27d01188cb7212520cb694ed1f1ac3429",
+          "operation": "create",
+          "path": "src/components/glow-card/GlowCard.tsx"
+        }
+      ],
+      "projectPath": "/tmp/blockbase-fixture/p2",
+      "revisionId": "sha256:6b02cb6564c40c05f46579a56698570d4d39451549c3bd1f4093e909c2911b23",
+      "schemaVersion": "1",
+      "writes": [
+        "src/components/glow-card/GlowCard.tsx"
+      ]
+    }
+  },
+  "ok": true,
+  "operation": "add",
+  "schemaVersion": "1",
+  "warnings": []
+}

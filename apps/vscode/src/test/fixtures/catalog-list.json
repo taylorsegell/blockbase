@@ -1,0 +1,38 @@
+{
+  "data": {
+    "collections": [
+      {
+        "id": "favorites",
+        "reserved": true,
+        "slugs": [
+          "static-card"
+        ],
+        "title": "Favorites"
+      },
+      {
+        "id": "ideas",
+        "reserved": false,
+        "slugs": [],
+        "title": "Ideas"
+      }
+    ],
+    "components": [
+      {
+        "bucket": null,
+        "category": "imported",
+        "componentId": "cmp_local_static-card",
+        "description": "Imported React component Static Card.",
+        "displayName": "Static Card",
+        "namespace": "local",
+        "slug": "static-card",
+        "tags": [
+          "featured"
+        ]
+      }
+    ]
+  },
+  "ok": true,
+  "operation": "catalog.list",
+  "schemaVersion": "1",
+  "warnings": []
+}

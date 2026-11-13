@@ -1,0 +1,50 @@
+{
+  "name": "@blockbase/mcp",
+  "version": "0.3.2",
+  "description": "Blockbase MCP server exposing the component catalog to agents.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "blockbase-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.tsbuildinfo"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm --filter @blockbase/contracts build && pnpm --filter @blockbase/core build && tsc -p tsconfig.json",
+    "typecheck": "pnpm --filter @blockbase/contracts build && pnpm --filter @blockbase/core build && tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@blockbase/contracts": "workspace:*",
+    "@blockbase/core": "workspace:*",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorsegell/blockbase.git",
+    "directory": "packages/mcp"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

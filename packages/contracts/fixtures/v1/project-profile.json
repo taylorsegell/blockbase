@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1",
+  "projectPath": "/tmp/example-react-project",
+  "framework": {
+    "name": "vite",
+    "version": "7.0.0"
+  },
+  "language": {
+    "name": "typescript",
+    "moduleFormat": "esm"
+  },
+  "styling": {
+    "systems": ["css"],
+    "tokenFiles": ["src/index.css"]
+  },
+  "tokens": {
+    "values": {
+      "surface.default": "var(--color-surface)"
+    },
+    "aliases": {}
+  },
+  "dependencies": {
+    "runtime": {
+      "react": "^19.0.0"
+    },
+    "development": {
+      "typescript": "^5.0.0"
+    }
+  },
+  "conventions": {
+    "componentDirectory": "src/components",
+    "filenameCase": "pascal",
+    "importAlias": "@/"
+  },
+  "validationCommands": ["pnpm test", "pnpm build"],
+  "evidence": [
+    {
+      "path": "package.json",
+      "source": "package.json",
+      "fact": "React is a runtime dependency.",
+      "confidence": "high"
+    }
+  ],
+  "conflicts": []
+}

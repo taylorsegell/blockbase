@@ -1,0 +1,10 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+short-card.tsx
+export function ShortCard({ title }: { title: string }) {
+  const heading = title.toUpperCase();
+  return <div className="short-card">{heading}</div>;
+}
+
+export const shortCardTheme = createTheme(
+```

@@ -1,0 +1,14 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+// -- Component --
+export function MarkerCard() {
+  return <div className="marker-card">Marker</div>;
+}
+
+// --- Demo ---
+import { MarkerCard } from "./marker-card"
+
+export default function Demo() {
+  return <MarkerCard />;
+}
+```

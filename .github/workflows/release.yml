@@ -1,0 +1,50 @@
+name: Release
+
+# Pushing a vX.Y.Z tag publishes the five @blockbase packages to npm through
+# trusted publishing (OIDC), so no npm token is stored in the repository.
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
+        with:
+          version: 12.3.4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0 # zizmor: ignore[cache-poisoning]
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          # No cache input: setup-node v4 restores nothing, so a poisoned cache cannot reach a release.
+      - name: Check the tag matches every package version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          for manifest in packages/contracts packages/core packages/mcp apps/preview packages/cli; do
+            version="v$(node -p "require('./$manifest/package.json').version")"
+            if [ "$version" != "$TAG" ]; then echo "$manifest is $version, tag is $TAG"; exit 1; fi
+          done
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm test
+      # pnpm pack rewrites workspace: ranges; npm publish then uses OIDC and adds provenance.
+      - name: Publish
+        run: |
+          mkdir -p "$RUNNER_TEMP/packs"
+          for package in packages/contracts packages/core packages/mcp apps/preview packages/cli; do
+            (cd "$package" && pnpm pack --pack-destination "$RUNNER_TEMP/packs")
+          done
+          for tarball in "$RUNNER_TEMP"/packs/blockbase-contracts-*.tgz "$RUNNER_TEMP"/packs/blockbase-core-*.tgz "$RUNNER_TEMP"/packs/blockbase-mcp-*.tgz "$RUNNER_TEMP"/packs/blockbase-preview-*.tgz "$RUNNER_TEMP"/packs/blockbase-cli-*.tgz; do
+            npm publish "$tarball" --access public
+          done

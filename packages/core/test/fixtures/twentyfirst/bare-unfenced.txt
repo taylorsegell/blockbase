@@ -1,0 +1,4 @@
+// SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev
+export function SoftTag({ text }: { text: string }) {
+  return <span className="soft-tag">{text}</span>;
+}

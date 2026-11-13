@@ -1,0 +1,16 @@
+blocks:
+  - name: buttons
+    bucket: set
+    slug: duplicate
+    path: ../outside
+    exported: Duplicate
+  - name: buttons
+    bucket: build
+    slug: duplicate
+    path: buttons/shared
+    exported: Duplicate
+  - name: buttons
+    bucket: build
+    slug: other
+    path: buttons/shared
+    exported: Other

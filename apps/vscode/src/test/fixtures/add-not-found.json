@@ -1,0 +1,14 @@
+{
+  "error": {
+    "code": "COMPONENT_NOT_FOUND",
+    "details": {
+      "input": "cmp_nope"
+    },
+    "message": "No component matched the exact ID or alias."
+  },
+  "ok": false,
+  "operation": "add",
+  "recoveryActions": [],
+  "schemaVersion": "1",
+  "warnings": []
+}

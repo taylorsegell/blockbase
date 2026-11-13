@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1",
+  "sourceHash": "sha256:card",
+  "normalizerVersion": "1.0.0",
+  "status": "complete",
+  "coverage": {
+    "total": 1,
+    "normalized": 1,
+    "residual": 0
+  },
+  "residuals": [],
+  "warnings": []
+}

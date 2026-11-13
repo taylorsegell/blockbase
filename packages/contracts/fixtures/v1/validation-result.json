@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1",
+  "bundleId": "bundle_card_01",
+  "status": "passed",
+  "commands": [
+    {
+      "command": "pnpm test",
+      "status": "passed",
+      "exitCode": 0,
+      "output": "1 test passed"
+    }
+  ],
+  "residuals": [],
+  "warnings": []
+}

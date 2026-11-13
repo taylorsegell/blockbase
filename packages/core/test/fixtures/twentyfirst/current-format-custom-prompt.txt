@@ -1,0 +1,18 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+Please add this card to the project. Keep the same style as my other cards,
+for example: import { Panel } from "@/components/ui/panel" and then render <Panel /> inside the layout.
+Do not change the props.
+
+```tsx
+quiet-panel.tsx
+export function QuietPanel({ children }: { children: React.ReactNode }) {
+  return <section className="quiet-panel">{children}</section>;
+}
+
+demo.tsx
+import { QuietPanel } from "@/components/ui/quiet-panel"
+
+export default function Demo() {
+  return <QuietPanel>Hello</QuietPanel>;
+}
+```

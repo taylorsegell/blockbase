@@ -1,0 +1,6 @@
+blocks:
+  - name: buttons
+    bucket: build
+    slug: malformed
+    path: buttons/malformed
+    exported: Malformed

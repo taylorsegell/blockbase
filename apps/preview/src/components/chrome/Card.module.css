@@ -1,0 +1,190 @@
+.card {
+  --card-accent: #2dd4bf;
+  --card-surface: var(--card);
+  --card-ink: var(--card-foreground);
+  --card-muted: var(--muted-foreground);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  padding: 22px 24px 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 2.6);
+  background:
+    radial-gradient(
+      ellipse 90% 70% at 100% 0%,
+      color-mix(in oklab, var(--card-accent) 38%, transparent) 0%,
+      transparent 58%
+    ),
+    var(--card-surface);
+  color: var(--card-ink);
+  box-shadow: 0 2px 8px color-mix(in oklab, var(--foreground) 5%, transparent);
+}
+
+.green {
+  --card-accent: #2dd4bf;
+}
+
+.orange {
+  --card-accent: #f5c542;
+}
+
+.red {
+  --card-accent: #f0714a;
+}
+
+.blue {
+  --card-accent: #4b7cf5;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--card-muted);
+}
+
+.cardHeader svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btnOptions {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 36px;
+  text-align: center;
+}
+
+.cardBody h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  color: var(--card-ink);
+}
+
+.cardBody p {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  color: var(--card-muted);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 40px;
+  text-align: left;
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--card-ink);
+}
+
+.progressTrack {
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  border-radius: calc(var(--radius) * 999);
+  background: color-mix(in oklab, var(--foreground) 12%, transparent);
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: calc(var(--radius) * 999);
+  background: var(--card-accent);
+  transition: width 0.3s ease;
+}
+
+.progressValue {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  color: var(--card-muted);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.cardFooter ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cardFooter li {
+  margin-left: -10px;
+}
+
+.cardFooter li:first-child {
+  margin-left: 0;
+}
+
+.cardFooter img,
+.btnAdd {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--card-surface);
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.btnAdd {
+  display: grid;
+  place-items: center;
+  background: var(--card-accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btnAdd svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btnCountdown {
+  padding: 8px 12px;
+  border-radius: calc(var(--radius) * 999);
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+:global(.course-cards) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}

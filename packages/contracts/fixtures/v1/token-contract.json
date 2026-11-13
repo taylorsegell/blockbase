@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1",
+  "contractId": "tokens_card_v1",
+  "tokens": [
+    {
+      "name": "surface.default",
+      "role": "surface",
+      "valueType": "color",
+      "defaultValue": "#ffffff",
+      "fallbackValue": "#ffffff",
+      "confidence": 1
+    }
+  ]
+}

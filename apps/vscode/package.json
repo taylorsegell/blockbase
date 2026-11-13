@@ -1,0 +1,117 @@
+{
+  "name": "blockbase",
+  "displayName": "Blockbase",
+  "description": "Browse your local Blockbase component catalog from the editor.",
+  "publisher": "arkitect",
+  "author": "Taylor Segell",
+  "license": "MIT",
+  "version": "0.0.1",
+  "private": true,
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorsegell/blockbase.git",
+    "directory": "apps/vscode"
+  },
+  "engines": {
+    "vscode": "^1.96.0",
+    "node": ">=24"
+  },
+  "extensionKind": ["ui"],
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": { "supported": true }
+  },
+  "main": "./dist/main.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "blockbase", "title": "Blockbase", "icon": "media/logo.svg" }
+      ]
+    },
+    "views": {
+      "blockbase": [
+        { "id": "blockbase.catalog", "name": "Catalog", "icon": "media/logo.svg" }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "blockbase.catalog",
+        "when": "blockbase.cliMissing",
+        "contents": "The Blockbase CLI was not found on your PATH. Install it, then refresh:\n`npm install -g @blockbase/cli`\n[Refresh](command:blockbase.refresh)"
+      },
+      {
+        "view": "blockbase.catalog",
+        "when": "!blockbase.cliMissing",
+        "contents": "No catalog entries to show yet.\n[Open Catalog](command:blockbase.openPanel)"
+      }
+    ],
+    "commands": [
+      { "command": "blockbase.refresh", "title": "Blockbase: Refresh", "icon": "$(refresh)" },
+      { "command": "blockbase.openPanel", "title": "Blockbase: Open Catalog", "icon": "$(preview)" },
+      { "command": "blockbase.search", "title": "Blockbase: Search Catalog", "icon": "$(search)" },
+      { "command": "blockbase.clearSearch", "title": "Blockbase: Clear Search", "icon": "$(clear-all)" },
+      { "command": "blockbase.service.install", "title": "Blockbase: Install Catalog Service" },
+      { "command": "blockbase.service.runForSession", "title": "Blockbase: Run Catalog Page for This Session" },
+      { "command": "blockbase.service.restart", "title": "Blockbase: Restart Catalog Service" },
+      { "command": "blockbase.copyHandoff", "title": "Copy Handoff", "category": "Blockbase", "icon": "$(copy)" },
+      { "command": "blockbase.addToProject", "title": "Blockbase: Add to Project…", "icon": "$(add)" }
+    ],
+    "configuration": {
+      "title": "Blockbase",
+      "properties": {
+        "blockbase.port": {
+          "type": "integer",
+          "default": 0,
+          "minimum": 0,
+          "maximum": 65535,
+          "markdownDescription": "Port of the local Blockbase catalog page. `0` uses the port of the installed service (`blockbase ui service install`), then 47821."
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        { "command": "blockbase.clearSearch", "when": "blockbase.searching" },
+        { "command": "blockbase.copyHandoff", "when": "false" }
+      ],
+      "view/title": [
+        { "command": "blockbase.search", "when": "view == blockbase.catalog", "group": "navigation@1" },
+        { "command": "blockbase.clearSearch", "when": "view == blockbase.catalog && blockbase.searching", "group": "navigation@2" },
+        { "command": "blockbase.refresh", "when": "view == blockbase.catalog", "group": "navigation" },
+        { "command": "blockbase.openPanel", "when": "view == blockbase.catalog", "group": "navigation" }
+      ],
+      "view/item/context": [
+        { "command": "blockbase.copyHandoff", "when": "view == blockbase.catalog && viewItem == block", "group": "inline" },
+        { "command": "blockbase.copyHandoff", "when": "view == blockbase.catalog && viewItem == block", "group": "1_copy@1" },
+        { "command": "blockbase.addToProject", "when": "view == blockbase.catalog && viewItem == block", "group": "inline" },
+        { "command": "blockbase.addToProject", "when": "view == blockbase.catalog && viewItem == block", "group": "1_add@1" }
+      ]
+    }
+  },
+  "scripts": {
+    "typecheck": "pnpm --filter @blockbase/contracts build && tsc --noEmit -p tsconfig.json && tsc --noEmit -p webview-ui/tsconfig.json",
+    "build:extension": "esbuild ./src/extension.ts --bundle --outfile=dist/main.js --external:vscode --format=cjs --platform=node --target=node20 --sourcemap",
+    "build:webview": "vite build --config vite.webview.config.ts",
+    "build": "pnpm --filter @blockbase/contracts build && pnpm run build:extension && pnpm run build:webview",
+    "test": "pnpm --filter @blockbase/contracts build && vitest run",
+    "test:watch": "vitest",
+    "package": "pnpm run build && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@blockbase/contracts": "workspace:*",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@types/vscode": "1.96.0",
+    "@vitejs/plugin-react": "^5.0.2",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.25.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
+    "vitest": "^3.2.4"
+  }
+}

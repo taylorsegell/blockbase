@@ -1,0 +1,16 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+Here is the component:
+```tsx
+export function TwinCard() {
+  return <div className="twin-card">Twin</div>;
+}
+```
+
+And here is how to use it:
+```tsx
+import { TwinCard } from "./twin-card"
+
+export default function Demo() {
+  return <TwinCard />;
+}
+```

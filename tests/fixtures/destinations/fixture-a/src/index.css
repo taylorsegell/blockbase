@@ -1,0 +1,8 @@
+:root {
+  --color-surface: #ffffff;
+  --color-ink: #171717;
+}
+.dark {
+  --color-surface: #171717;
+  --color-ink: #ffffff;
+}

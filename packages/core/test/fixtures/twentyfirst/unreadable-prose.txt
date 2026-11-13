@@ -1,0 +1,3 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+I liked the soft card on that site, the one with the blue border and the rounded corners.
+Could we make something like it for the pricing page later this week?

@@ -1,0 +1,108 @@
+{
+  "data": {
+    "applied": false,
+    "bundle": {
+      "bundleId": "bundle_698a603694e79989",
+      "componentId": "cmp_local_third-party-card",
+      "dependencyDelta": {
+        "add": [],
+        "conflicts": [],
+        "remove": []
+      },
+      "files": [
+        {
+          "content": "import { clsx } from 'clsx';\nexport function ThirdParty() { return <div className={clsx('bg-[var(--color-surface)]', 'p-4')}>Third party</div>; }\n",
+          "contentHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f",
+          "operation": "replace",
+          "path": "src/components/third-party-card/ThirdParty.tsx",
+          "targetHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f"
+        }
+      ],
+      "manifest": {
+        "bundleId": "bundle_698a603694e79989",
+        "componentId": "cmp_local_third-party-card",
+        "files": [
+          {
+            "contentHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f",
+            "operation": "replace",
+            "path": "src/components/third-party-card/ThirdParty.tsx",
+            "targetHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f"
+          }
+        ],
+        "generatedAt": "1970-01-01T00:00:00.000Z",
+        "projectPath": "/tmp/blockbase-fixture/project",
+        "revisionId": "sha256:76bb6554f4861d85d0a0ef2ace491b2d061ca1dcef2db72fba2a51be01ea6c8e",
+        "schemaVersion": "1",
+        "validationCommands": [
+          "pnpm build",
+          "pnpm lint",
+          "pnpm test"
+        ]
+      },
+      "placement": {
+        "directory": "src/components/third-party-card",
+        "importPath": "@/components/third-party-card/ThirdParty"
+      },
+      "projectPath": "/tmp/blockbase-fixture/project",
+      "provenance": {
+        "attributionStatus": "unknown",
+        "license": "unknown",
+        "locator": "/tmp/blockbase-fixture/repo-fixtures/sources/normalization/third-party-import",
+        "sourceHash": "sha256:76bb6554f4861d85d0a0ef2ace491b2d061ca1dcef2db72fba2a51be01ea6c8e",
+        "sourceType": "directory"
+      },
+      "providers": [],
+      "residuals": [],
+      "revisionId": "sha256:76bb6554f4861d85d0a0ef2ace491b2d061ca1dcef2db72fba2a51be01ea6c8e",
+      "risk": "medium",
+      "schemaVersion": "1",
+      "tokenMappings": [
+        {
+          "confidence": "high",
+          "destinationExpression": "var(--color-surface)",
+          "sourceToken": "color.surface.default"
+        },
+        {
+          "confidence": "low",
+          "destinationExpression": "1rem",
+          "sourceToken": "space.4"
+        }
+      ],
+      "validationCommands": [
+        "pnpm build",
+        "pnpm lint",
+        "pnpm test"
+      ],
+      "warnings": [
+        "Token space.4 has no destination token; preserved fallback 1rem."
+      ]
+    },
+    "plan": {
+      "blocked": [],
+      "bundleId": "bundle_698a603694e79989",
+      "dependencyDelta": {
+        "add": [],
+        "conflicts": [],
+        "remove": []
+      },
+      "files": [
+        {
+          "contentHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f",
+          "operation": "replace",
+          "path": "src/components/third-party-card/ThirdParty.tsx",
+          "targetHash": "sha256:307dc766814a55e73375c7d94f04c512a6a1f477ee1f0b4dd7710e514b6fb55f"
+        }
+      ],
+      "projectPath": "/tmp/blockbase-fixture/project",
+      "revisionId": "sha256:76bb6554f4861d85d0a0ef2ace491b2d061ca1dcef2db72fba2a51be01ea6c8e",
+      "schemaVersion": "1",
+      "writes": [
+        "src/components/third-party-card/ThirdParty.tsx"
+      ]
+    }
+  },
+  "ok": true,
+  "operation": "add",
+  "schemaVersion": "1",
+  "warnings": []
+}

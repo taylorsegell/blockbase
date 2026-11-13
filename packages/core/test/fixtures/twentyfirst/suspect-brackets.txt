@@ -1,0 +1,7 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+open-card.tsx
+export function OpenCard() {
+  const parts = ["a", "b"];
+  return <div className="open-card">{parts.join(", ")}</div>;
+```

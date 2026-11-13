@@ -1,0 +1,6 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+cut-card.tsx
+export function CutCard() {
+  return <div className="cut-card">Cut</div>;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "fixture-a-vite-tailwind",
+  "type": "module",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": { "lint": "eslint .", "test": "vitest run", "build": "vite build" },
+  "dependencies": { "@vitejs/plugin-react": "^4.3.0", "clsx": "^2.1.1", "react": "^18.3.1", "react-dom": "^18.3.1" },
+  "devDependencies": { "@types/react": "^18.3.0", "tailwindcss": "^3.4.10", "typescript": "^5.5.4", "vite": "^5.4.0" }
+}

@@ -1,0 +1,6 @@
+name: buttons
+bucket: build
+slug: different
+source: fixture
+exported: Other
+tags: [different]

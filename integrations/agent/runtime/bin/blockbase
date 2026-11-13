@@ -1,0 +1,42 @@
+#!/bin/sh
+# Blockbase CLI launcher for the Claude Code plugin (on PATH while the plugin is enabled).
+# Resolution order:
+#   1. a different `blockbase` on PATH (a global npm install wins)
+#   2. $BLOCKBASE_CLI_ENTRY, exported by the SessionStart hook
+#   3. the plugin data directory install made by the hook
+#   4. npx, last: a login service installed from an npx cache path could later disappear
+#      when npm prunes its cache, so prefer the persistent installs above.
+VERSION="__PLUGIN_VERSION__"
+
+self=$0
+case "$self" in */*) ;; *) self=$(command -v -- "$self" 2>/dev/null || printf '%s' "$self") ;; esac
+self_dir=$(cd "$(dirname "$self")" 2>/dev/null && pwd -P)
+
+# A blockbase on PATH that is itself (a link to) this launcher would bounce back here forever,
+# so the PATH search runs at most once per invocation chain.
+old_ifs=$IFS
+IFS=:
+[ -n "${BLOCKBASE_LAUNCHER_ACTIVE:-}" ] && PATH_SEARCH= || PATH_SEARCH=$PATH
+BLOCKBASE_LAUNCHER_ACTIVE=1
+export BLOCKBASE_LAUNCHER_ACTIVE
+for dir in $PATH_SEARCH; do
+  [ -n "$dir" ] || continue
+  [ -x "$dir/blockbase" ] || continue
+  real=$(cd "$dir" 2>/dev/null && pwd -P)
+  [ "$real" = "$self_dir" ] && continue
+  IFS=$old_ifs
+  exec "$dir/blockbase" "$@"
+done
+IFS=$old_ifs
+unset BLOCKBASE_LAUNCHER_ACTIVE
+
+if [ -n "${BLOCKBASE_CLI_ENTRY:-}" ] && [ -f "$BLOCKBASE_CLI_ENTRY" ]; then
+  exec node "$BLOCKBASE_CLI_ENTRY" "$@"
+fi
+
+for entry in "${CLAUDE_PLUGIN_DATA:-}/cli/node_modules/@blockbase/cli/dist/index.js" \
+  "$HOME"/.claude/plugins/data/blockbase*/cli/node_modules/@blockbase/cli/dist/index.js; do
+  if [ -f "$entry" ]; then exec node "$entry" "$@"; fi
+done
+
+exec npx --yes "@blockbase/cli@$VERSION" "$@"

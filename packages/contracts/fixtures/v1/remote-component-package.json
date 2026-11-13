@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1",
+  "componentId": "cmp_card_01",
+  "revisionId": "sha256:card-revision",
+  "manifest": {
+    "schemaVersion": "1",
+    "componentId": "cmp_card_01",
+    "namespace": "local",
+    "slug": "card",
+    "displayName": "Card",
+    "description": "A compact content card.",
+    "aliases": [],
+    "tags": ["card", "content"],
+    "category": "cards",
+    "framework": "react",
+    "stylingModes": ["css"],
+    "currentRevision": "sha256:card-revision",
+    "provenance": {
+      "sourceType": "file",
+      "locator": "fixtures/Card.tsx",
+      "license": "MIT",
+      "attributionStatus": "known"
+    },
+    "compatibility": {
+      "language": "typescript",
+      "runtime": "react",
+      "frameworkRange": ">=19",
+      "clientServer": "either"
+    },
+    "interface": {
+      "props": ["title"],
+      "slots": [],
+      "events": [],
+      "accessibilityNotes": ["Use a heading for the card title."]
+    },
+    "dependencies": [],
+    "tokens": {
+      "schemaVersion": "1",
+      "contractId": "tokens_card_v1",
+      "tokens": [
+        {
+          "name": "surface.default",
+          "role": "surface",
+          "valueType": "color",
+          "defaultValue": "#ffffff",
+          "fallbackValue": "#ffffff",
+          "confidence": 1
+        }
+      ]
+    },
+    "quality": {
+      "parseStatus": "passed",
+      "previewStatus": "unknown",
+      "normalizationCoverage": 1,
+      "riskLevel": "low",
+      "warnings": []
+    },
+    "integrity": {
+      "sourceHash": "sha256:card",
+      "assetHashes": []
+    }
+  },
+  "files": [
+    {
+      "path": "Card.tsx",
+      "content": "export function Card({ title }) {\n  return title;\n}\n",
+      "contentHash": "sha256:8172345306a5d77f40bdb042242b1b2701894e7984209cf86f2bcb0e0e31e37c"
+    }
+  ],
+  "assets": [
+    {
+      "path": "icons/star.svg",
+      "contentBase64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxjaXJjbGUgcj0iMSIvPjwvc3ZnPg==",
+      "contentHash": "sha256:f16ceffc4f2163e45c670396b362d6a7d45621fd7930d7b5d0a7953c247751d5",
+      "mediaType": "image/svg+xml"
+    }
+  ]
+}

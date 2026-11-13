@@ -1,0 +1,6 @@
+name: buttons
+bucket: build
+slug: arrow
+source: fixture
+exported: Arrow
+tags: [button]

@@ -1,0 +1,15 @@
+@import "./arkitect.css";
+@import "./catppuccin.css";
+@import "./cyberpunk.css";
+@import "./github.css";
+@import "./modern-minimal.css";
+@import "./neo-brutalism.css";
+@import "./vercel.css";
+
+[data-theme]:not([data-theme^="blocks"]) {
+  --brand: var(--primary);
+}
+
+[data-theme] {
+  --line: color-mix(in oklab, var(--border) 64%, var(--background));
+}

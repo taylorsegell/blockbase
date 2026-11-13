@@ -1,0 +1,7 @@
+<!-- SYNTHETIC FIXTURE: written for Blockbase tests, not copied from 21st.dev -->
+```tsx
+plain-badge.tsx
+export function PlainBadge({ value }: { value: number }) {
+  return <span className="plain-badge">{value}</span>;
+}
+```
