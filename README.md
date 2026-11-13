@@ -1,10 +1,30 @@
 # Blockbase
 
+![Blockbase launch poster with the mascot, install command, and four product benefits](docs/media/blockbase-poster.jpg)
+
+[Download the 24-second Blockbase demo](docs/media/blockbase-demo.mp4)
+
 Blockbase is a local catalog and adaptation engine for UI components. Import a component once and Blockbase keeps its original source immutable, indexes it for search, and normalizes its styling into a framework-neutral token contract. When you need it in another project, Blockbase produces an adaptation that fits that project's own tokens and conventions, usually in one or two agent exchanges.
 
 It runs entirely on your machine: there's no account and no cloud service. Installing the agent integration also sets up an opt-out, user-level login service that serves the catalog page on loopback; remove it any time with `blockbase ui service uninstall`.
 
 > The CLI, MCP server, and agent integrations are tested on macOS and Linux. The catalog page (`blockbase ui`) renders catalog components locally. See [Current limitations](#current-limitations).
+
+## What you can do with Blockbase
+
+- **Save components once.** Collect UI from 21st.dev or your own code in a local library.
+- **Find them with your coding agent.** Search the components you’ve already saved.
+- **Fit them to your project.** Adapt components to your project’s tokens and imports.
+- **Review changes before writing.** See the plan and approve it before Blockbase writes files.
+
+<details>
+<summary>See the catalog and an adaptation plan</summary>
+
+![Blockbase catalog showing a search for the FAQ Accordion and its component preview](docs/media/blockbase-catalog.jpg)
+
+![Blockbase demo showing the agent’s adaptation plan and the resulting file path](docs/media/blockbase-adaptation.jpg)
+
+</details>
 
 ## Requirements
 
